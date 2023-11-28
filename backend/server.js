@@ -8,7 +8,7 @@ require('dotenv').config();
 
 // const globalConfigs = require('./backend/routes/globalConfigs');
 // ./backend/routes/globalConfigs
-const statistics = require('./backend/routes/statistics');
+const statistics = require('./src/routes/statistics');
 
 // const mainRoute = require('./routes/index');
 
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Config
-const db = require('./backend/config/keys').mongoURI;
+const db = require('./src/config/keys').mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(db, {useUnifiedTopology: true})

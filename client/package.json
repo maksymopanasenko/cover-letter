@@ -2,7 +2,6 @@
   "name": "cover-letter",
   "version": "0.1.0",
   "private": true,
-  "main": "server.js",
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
@@ -12,14 +11,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.5.1",
     "axios": "^1.6.2",
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
     "framer-motion": "^6.5.1",
     "i18next": "^23.7.6",
-    "mongodb": "^6.3.0",
-    "mongoose": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.5.0",
@@ -31,8 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "nodemon server.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,8 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
   }
 }
