@@ -2,7 +2,6 @@ import { Button } from '@chakra-ui/react';
 import { useToast } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next';
 import { CheckIcon } from '@chakra-ui/icons';
-import axios from 'axios';
 import sendDataToServer from '../../helpers/sendData';
 
 const API_URL_IP = 'https://api.ipify.org/?format=json';
