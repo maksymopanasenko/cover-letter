@@ -34,8 +34,8 @@ function App() {
               {t("segment4")}<br /><br />
             </Text>
             <Text textAlign="start" mt={3} >
-            {t("final")}<br />
-            {t("name")}
+              {t("final")}<br />
+              {t("name")}
             </Text>
           </Stack>
           <Research />
