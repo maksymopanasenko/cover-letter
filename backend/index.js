@@ -6,7 +6,7 @@ const path = require('path');
 require('dotenv').config();
 
 
-const routes = require("./routes/index.js");
+const routes = require("./src/routes/index.js");
 
 const app = express();
 
