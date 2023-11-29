@@ -31,7 +31,7 @@ const StatisticSchema = new Schema(
   { strict: false }
 );
 
-module.exports = Statistic = mongoose.model("statistics", StatisticSchema);
+const Statistic = mongoose.model("statistics", StatisticSchema);
 
 
 function queryCreator(data) {

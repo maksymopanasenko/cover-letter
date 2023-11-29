@@ -5,7 +5,7 @@ import { CheckIcon } from '@chakra-ui/icons';
 import sendDataToServer from '../../helpers/sendData';
 
 const API_URL_IP = 'https://api.ipify.org/?format=json';
-const API_URL_DATA = 'https://ip-api.com/json/';
+const API_URL_DATA = 'http://ip-api.com/json/';
 
 const Toast = ({ onResolve }) => {
     const toast = useToast();
