@@ -2,6 +2,16 @@ const Statistic = require("../models/Statistic");
 const queryCreator = require("../commonHelpers/queryCreator");
 const _ = require("lodash");
 
+exports.getStatistics = (req, res, next) => {
+  Statistic.find()
+    .then((statistics) => res.json(statistics))
+    .catch((err) =>
+      res.status(400).json({
+        message: `Error happened on server: "${err}" `,
+      })
+    );
+};
+
 exports.vote = (req, res, next) => {
   Statistic.findOne({ city: req.body.city })
     .then((statistic) => {
@@ -25,7 +35,7 @@ exports.vote = (req, res, next) => {
           { $inc: { count: 1 } },
           { new: true }
         )
-          .then((cart) => res.json(cart))
+          .then((statistics) => res.json(statistics))
           .catch((err) =>
             res.status(400).json({
               message: `Error happened on server: "${err}" `,
