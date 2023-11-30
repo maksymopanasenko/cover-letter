@@ -13,9 +13,12 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import Research from './components/Research/Research';
+import CookieBanner from './components/CookieBanner/CookieBanner';
+
 
 function App() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl" pt={4} pb={10} minH='100vh'>
@@ -39,6 +42,7 @@ function App() {
             </Text>
           </Stack>
           <Research />
+          <CookieBanner />
         </Container>
       </Box>
     </ChakraProvider>
