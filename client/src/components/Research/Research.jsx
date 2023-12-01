@@ -1,17 +1,15 @@
 import {
-    Button,
     Center,
     Stack,
     Text,
 } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
-import { CheckIcon } from '@chakra-ui/icons';
 import Toast from '../Toast/Toast';
 import { useState } from 'react';
 
 const Research = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [isResolved, setIsResolved] = useState(true);
 
     const handleResolving = () => {

@@ -1,35 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Button, Link, Text } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, Button, Text, useBreakpointValue, useColorMode } from '@chakra-ui/react';
 import sendDataToServer from '../../helpers/sendData';
+import { useTranslation } from 'react-i18next';
 
 
 const API_URL_IP = 'https://api.ipify.org/?format=json';
 const API_URL_DATA = 'https://ipapi.co/';
 
 const CookieBanner = () => {
+    const { colorMode } = useColorMode();
     const [showBanner, setShowBanner] = useState(true);
+    const { t } = useTranslation();
+    const variant = useBreakpointValue(
+        {
+            base: 12,
+            md: 16,
+            lg: 18,
+        },
+        {
+            fallback: 'md',
+        },
+    )
 
-    const handleAccept = () => setShowBanner(false);   
-    
-    useEffect(() => {
-        (async () => {
-          try {
+    const handleAccept = async () => {
+        setShowBanner(false);
+        try {
             const ipResponse = await fetch(API_URL_IP);
             const { ip } = await ipResponse.json();
-    
+
+            if (localStorage.getItem("ip") === ip) return;
+
             const dataResponse = await fetch(`${API_URL_DATA}${ip}/json`);
-            const { city, country_name } = await dataResponse.json();
+            const {city, country_name } = await dataResponse.json();
+
             const bodyData = {
-              city: city,
-              country: country_name
+                city: city,
+                country: country_name
             };
+
             await sendDataToServer(bodyData);
-    
-          } catch (error) {
+            localStorage.setItem("ip", ip);
+        } catch (error) {
             throw error;
-          }
-        })()
-      }, [])
+        }
+    }
 
     return (
         showBanner && (
@@ -47,12 +61,12 @@ const CookieBanner = () => {
                     left="0"
                     right="0"
                     bottom="0"
-                    backdropFilter="blur(5px)"
+                    backdropFilter="blur(6px)"
                     borderRadius="md"
                 />
                 <Box
-                    bg="#333"
-                    color="white"
+                    bg={colorMode === 'light' ? 'white' : 'gray.800'}
+                    color={colorMode === 'light' ? 'black' : 'white'}
                     p={4}
                     position="fixed"
                     bottom={0}
@@ -60,12 +74,11 @@ const CookieBanner = () => {
                     width="100%"
                     textAlign="center"
                 >
-                    <Text>
-                        We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.
-                        Learn more in our <Link href="/privacy-policy">Privacy Policy</Link>.
+                    <Text fontSize={variant} mb={5}>
+                        {t("research")}
                     </Text>
-                    <Button colorScheme="green" ml={4} onClick={handleAccept}>
-                        Accept
+                    <Button colorScheme="yellow" ml={4} onClick={handleAccept}>
+                        {t("btn")}
                     </Button>
                 </Box>
             </Box>
