@@ -2,7 +2,6 @@ const ACCESS_TOKEN = 'your_secure_access_token';
 
 function validateAccessToken(req) {
   const authHeader = req.headers.authorization;
-  console.log("authHeader", authHeader);
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return false;
   }
@@ -11,6 +10,9 @@ function validateAccessToken(req) {
 }
 
 exports.webhookHandler = (req, res) => {
+  console.log("Received webhook:", req.body);
+  console.log("Headers:", req.headers);
+  console.log("Query Params:", req.query);
   if (!validateAccessToken(req)) {
     return res.status(401).json({ error: 'Invalid access token' });
   }
